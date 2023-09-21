@@ -1,0 +1,36 @@
+server:
+  port: 8090
+logging:
+    level:
+        org.springframework: info
+        data: DEBUG
+        security: DEBUG
+    config: classpath:logback-spring.xml
+spring:
+  mvc:
+    static-path-pattern: /**
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    cache: false
+  datasource:
+         type: com.alibaba.druid.pool.DruidDataSource
+         url: jdbc:mysql://localhost:3306/onepiece?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+         username: root
+         password: 123456
+         driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+mybatis:
+  typeAliasesPackage: com.songhaozhi.mayday.model.domain
+  mapperLocations: classpath:mapper/*/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
